@@ -137,7 +137,7 @@
 }
 ```
 - `type` is a required CodeableConcept
-- The `text` property inside the `type`'s CodeableConcept is an optional css `class` that you may which to apply to your button. If the class does not exist in rogue_ui then the UI member for your team will have to create the desired aesthetics.
+- The `text` property inside the `type`'s CodeableConcept is an optional css `class` that you may want to apply to your button. If the class does not exist in rogue_ui then the UI member for your team will have to create the desired aesthetics.
 - `valueRelatedArtifact` will contain all the information needed to support the Outcome Button
 - `valueRelatedArtifact.id` represents the type of button, position of button, and position inside a group if applicable -> buttonType-buttonIndex-groupIndex. If the button is not a group, please put a grupIndex of 0. 
 - `buttonType` - `"button" | "buttonGroup" | "ellipsis"`
