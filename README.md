@@ -136,15 +136,41 @@
   }
 }
 ```
-- `type` is a required CodeableConcept
-- The `text` property inside the `type`'s CodeableConcept is an optional css `class` that you may want to apply to your button. If the class does not exist in rogue_ui then the UI member for your team will have to create the desired aesthetics.
-- `valueRelatedArtifact` will contain all the information needed to support the Outcome Button
-- `valueRelatedArtifact.id` represents the type of button, position of button, and position inside a group if applicable -> `buttonType-buttonIndex-groupIndex`. If the button is not a group, please put a `groupIndex` of 0. 
-- `buttonType` - `"button" | "buttonGroup" | "ellipsis"`
-- `buttonIndex` - Buttons will be ordered from left -> right. There is also a maximum of 4 buttons. If you need more outcomes please consider either a `buttonGroup` or `ellipsis`
-- `valueRelatedArtifact.display` used to applay a css `variant` for the Button. A `variant` is different than a regular `class` because it is a set of styles. Refer to rogue_storybook for details on each `variant`
-- `valueRelatedArtifact.document.title` The label of the button
-- `valueRelatedArtifact.document.data` The mutation to execute. All the variables **MUST** be supplied. The UI will parse the data, and simply call
+### type
+  - `type` is a required CodeableConcept
+  - The `text` property inside the `type`'s CodeableConcept is an optional css `class` that you may want to apply to your button. If the class does not exist in rogue_ui then the UI member for your team will have to create the desired aesthetics.
+### valueRelatedArtifact
+  - `valueRelatedArtifact` will contain all the information needed to support the Outcome Button
+  - `id` represents the type of button, position of button, and position inside a group if applicable -> `buttonType-buttonIndex-groupIndex`. If the button is not a group, please put a `groupIndex` of 0. 
+  - `buttonType` - `"button" | "buttonGroup" | "ellipsis"`
+  - `buttonIndex` - Buttons will be ordered from left -> right. There is also a maximum of 4 buttons. If you need more outcomes please consider either a `buttonGroup` or `ellipsis`
+  - `display` used to applay a css `variant` for the Button. A `variant` is different than a regular `class` because it is a set of styles. Refer to rogue_storybook for details on each `variant`
+  - `document.title` The label of the button
+  - `document.data` The mutation to execute. All the variables **MUST** be supplied. The UI will parse the data, and simply call
+#### data
+```
+[
+      {
+        actions: {
+          operationName: 'ExecuteConductorWorkflow',
+          query: 'mutation ExecuteConductorWorkflow($name: String!, $data: JSON!) {executeConductorWorkflow(name: $name, data: $data)}',
+          variables: {
+            name: 'complete_letter',
+            data: {
+              sessionData: {
+                documentReferenceReference: 'DocumentReference/$id',
+                resourceId: '231fd06f-8a7c-48d5-89f6-3a3f441dbed4',
+              },
+            },
+          },
+        },
+      },
+    ]
+```
+- Despite this property being an array, we currently only support one action. This behavior may be imporved in future sprints
+- `query` The query/mutation that will be called. It must follow the above format with the mutation name declared as well as all variables
+- `variables` **Exactly** what you wish to be sent with the mutation. There will no other variables aside from what you include here. 
+- The UI will run the code as follows 
 ```
 mutate({
   mutation: gql(actions.query)
