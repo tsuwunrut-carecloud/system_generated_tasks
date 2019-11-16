@@ -9,7 +9,7 @@
  ```
   {
     type: {
-      text: "\\s*(\\S|\\s)*"
+      text: `"\\s*(\\S|\\s)*"`
       coding: [
         {
           system: "CodeSystem/carecloud-task-input-types",
@@ -29,7 +29,7 @@
   - "\\s*(\\S|\\s)*"
 ### valueDateTime
   - Used for date and time values. 
-  -  "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?" 
+  -  `"([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"`
 ### valueCoding 
   ```
   {
@@ -137,7 +137,7 @@
 ```
 - `type` is a required CodeableConcept
 - `valueRelatedArtifact` will contain all the information needed to support the Outcome Button
-- `valueRelatedArtifact.id` represents the type of button, position of button, and position inside a group if applicable -> buttonType-buttonIndex-groupIndex. If the button is not a group, please put a grupIndex of 0.
+- `valueRelatedArtifact.id` represents the type of button, position of button, and position inside a group if applicable -> `buttonType-buttonIndex-groupIndex`. If the button is not a group, please put a grupIndex of 0.
 - `valueRelatedArtifact.display` used to applay a css `variant` for the Button. 
 - `valueRelatedArtifact.document.title` The label of the button
 - `valueRelatedArtifact.document.data` The mutation to execute. All the variables *MUST* be supplied. The UI will parse the data, and simply call
