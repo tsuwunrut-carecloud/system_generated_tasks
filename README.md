@@ -139,7 +139,7 @@
 - `type` is a required CodeableConcept
 - The `text` property inside the `type`'s CodeableConcept is an optional css `class` that you may want to apply to your button. If the class does not exist in rogue_ui then the UI member for your team will have to create the desired aesthetics.
 - `valueRelatedArtifact` will contain all the information needed to support the Outcome Button
-- `valueRelatedArtifact.id` represents the type of button, position of button, and position inside a group if applicable -> buttonType-buttonIndex-groupIndex. If the button is not a group, please put a grupIndex of 0. 
+- `valueRelatedArtifact.id` represents the type of button, position of button, and position inside a group if applicable -> `buttonType-buttonIndex-groupIndex`. If the button is not a group, please put a `groupIndex` of 0. 
 - `buttonType` - `"button" | "buttonGroup" | "ellipsis"`
 - `buttonIndex` - Buttons will be ordered from left -> right. There is also a maximum of 4 buttons. If you need more outcomes please consider either a `buttonGroup` or `ellipsis`
 - `valueRelatedArtifact.display` used to applay a css `variant` for the Button. A `variant` is different than a regular `class` because it is a set of styles. Refer to rogue_storybook for details on each `variant`
