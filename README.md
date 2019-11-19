@@ -184,6 +184,7 @@ mutate({
   valueCode: "close" | "launch-sidebar" | "redirect"
 }
 ```
+- The possible extensions are `postAction`, `waitingAction`, and `redirectAction`. All should follow the same convention, `3.0/StructureDefinition/extension-Task.waitingAction`
 
 ## Identifiers 
  - Used to include a Resource that may be related to the Task. For example, a `DocumentReference` is listed as an `identifier` for the Finalize_Letter task. An `Encounter` is a likely case for an identifier. 
