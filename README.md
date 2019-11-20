@@ -93,6 +93,45 @@
 - Refer to the mocks for visual representation
 - https://projects.invisionapp.com/d/main?origin=v7#/console/14437659/392862697/preview?scrollOffset=7047.5
 
+### Detail View (Combined View)
+ - If your TaskDetails require a collection of different "views", https://projects.invisionapp.com/d/main#/console/14437659/392253769/preview, this view would require the Column and List.
+ - Then you should send `DetailView` in the `text` property for the CodeableConcept
+ - The JSON structure for the `valueString` will be as follows
+ ```
+ {
+    data: [
+        {
+            type: 'list',
+            content: {
+                'Foobar': [value, value, value]
+            },
+        }
+        {
+            type: 'column',
+            content: [
+                {
+                    'Foo': [{ label, value }, { label, value }, { label, value }]
+                },
+                {
+                    'Bar': [{ label, value }, { label, value }],
+                    'Baz': [{ label, value }, { label, value }],
+                },
+                {
+                    'Qux': [{ label, value }, { label, value }, { label, value }]
+                },
+            ],
+        },
+        {
+            type: 'unknown-component-yet',
+            content: {
+                'Foobar': [value, value, value]
+            },
+        }
+    ]
+}
+ ```
+
+
 
 ## Outputs 
 - This is used to determine the outcomes you can take on the Task.
